@@ -1,22 +1,37 @@
 package cashRegister;
 
-//.import bank.BankAccount;
+import java.util.Scanner;
 
 public class CashRegisterTester {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		 CashRegister harrysChecking = new CashRegister();
-		 CashRegister katiesChecking = new CashRegister();
-		 
-		 harrysChecking.giveChange(100);
-		 
-	      System.out.println(harrysChecking.getPurchase());  
-	      System.out.println("Expected: 1500"); 
-	      System.out.println(katiesChecking.getPayment());
-	}
-
+		
+		CashRegister register = new CashRegister();
+		
+		final double SENTINEL = -1;
+		
+		Scanner in = new Scanner(System.in);
+		System.out.print("Enter an amount to purchase or -1 to stop: ");
+		
+		while(in.hasNextDouble()) 
+		{
+			double costPurchase = in.nextDouble();
+			if(costPurchase == SENTINEL) 
+			{
+				break;
+			}
+			System.out.print("Enter an amount to purchase or -1 to stop: ");
+			register.recordPurchase(costPurchase);
+		}
+		System.out.print("Enter a payment amount: ");
+		double amountPaid = in.nextDouble();
+		register.receivePayment(amountPaid);
+		register.giveChange();
+		register.printChange();
 }
+}
+
 /**
 •	REVIEW Assignment for CS176
 •	Create a class called CashRegister.
