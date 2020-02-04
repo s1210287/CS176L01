@@ -7,7 +7,7 @@ public class CashRegisterTester {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		CashRegister register = new CashRegister();
+		CashRegister cash = new CashRegister();
 		
 		final double SENTINEL = -1;
 		
@@ -22,16 +22,15 @@ public class CashRegisterTester {
 				break;
 			}
 			System.out.print("Enter an amount to purchase or -1 to stop: ");
-			register.recordPurchase(costPurchase);
+			cash.recordPurchase(costPurchase);
 		}
 		System.out.print("Enter a payment amount: ");
 		double amountPaid = in.nextDouble();
-		register.receivePayment(amountPaid);
-		register.giveChange();
-		register.printChange();
+		cash.receivePayment(amountPaid);
+		cash.giveChange();
+		cash.printChange();
 }
 }
-
 /**
 •	REVIEW Assignment for CS176
 •	Create a class called CashRegister.
