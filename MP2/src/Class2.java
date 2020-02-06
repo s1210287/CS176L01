@@ -33,7 +33,6 @@ public class Class2 {
 		{
 			int largest = integerArray[0]; //value that is returned
 			for (i>largest)
-				
 			//another for loop
 		}
 		public int findMin()
