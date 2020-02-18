@@ -1,203 +1,149 @@
 package cs176.s1210287;
-
 import java.util.Scanner;
-import java.util.Arrays;
 
 public class Class2 {
 
+
+
 	Scanner in = new Scanner(System.in);
 
-	final int MAX_ARRAY_SIZE = 100;
+	int counter = 0;
 
-	int arraySize = 0;
-
-	int count = 0;
-
-	String load = "";
-
-	String max = "";
-
-	String min = "";
+	//
 	
-	String longest= "";
+	int[] intArray;
 
-	String shortest = "";
+	public Class2(int cap) {
 
-	boolean fin = false;
-	
-	String [] stringArray;
-
-	
-
-	public  Class2() {
-
-		stringArray = new String[MAX_ARRAY_SIZE];
+		counter = cap;
 
 	}
 
-	public void load () {
+	public void load() {
 
+		int [] integers = new int[counter];
 
+		System.out.print("Enter an integer followed by any letter to quit: ");
 
-		System.out.println("Enter some strings or enter FIN to finish: ");
+		counter = 0;
 
-		
+		for (int i = 0; i < integers.length; i++) {
 
-		while (fin == false ) {
+			if(in.hasNextInt()) {
 
-			load = in.next();
+				integers[i] = in.nextInt();
 
-			if (load.contentEquals("FIN")) {
-
-				fin = true;
-
-				count--;
-
-				}
-
-			else {
-
-				stringArray[count] = load;
-				
-				if (count == 1 ) {
-
-					if (stringArray[count].compareTo(stringArray[count-1]) < 0) {
-
-					max = stringArray[count];
-
-					min = stringArray[count-1];
-
-					count++;
-
-					}
-
-					else {
-
-						min =stringArray[count-1];
-
-						max = stringArray[count];
-
-						count++;
-
-					}
-
-				}
-
-				else if (count > 1) {
-
-					if (stringArray[count].compareTo(min) < 0){
-
-							min = stringArray[count];
-
-					}//if
-
-					if (stringArray[count].compareTo(max) > 0){
-
-							max = stringArray[count];
-
-					}
-
-					count++;
-
-				}
-
-				else
-
-					count++;
-			}
-
-		}
-
-	}
-
-	public boolean search(String inWord) {
-
-		boolean isInArray = false;
-
-		for (int i = 0; i <= count; i++) {
-
-			if (stringArray[i].contentEquals(inWord))
-
-					isInArray = true;
-		}
-
-		return isInArray;
-
-	}
-
-	public void findMax() {
-
-		System.out.println(max + " is the max");
-
-	}
-
-	public void findMin() {
-
-		System.out.println(min + " is the min");
-
-	}
-
-	public String findLongest() {
-
-		String longest = "";
-
-		for(int i = 0; i <= count; i++) {
-
-			if (stringArray[i].length() > longest.length()) {
-
-				longest = stringArray[i];
-			}
-		}
-
-		return longest;
-	}
-
-	public String findShortest() {
-
-		String shortest = "";
-
-		int shortCounter = 0;
-
-		String multipleShortest = "";
-
-		for(int i = 0; i <= count; i++) {
-
-			if (i == 0) {
-
-				shortest = stringArray[i];
-
-				shortCounter = 1;
-
-				multipleShortest = stringArray[i];
-
-			}
-
-			else if (stringArray[i].length() < shortest.length()) {
-
-				shortest = stringArray[i];
-
-				count = 1;
-
-			}
-
-			else if (stringArray[i].length() == shortest.length()) {
-
-				multipleShortest = multipleShortest + ", and " + stringArray[i];
-
-				shortCounter++;
+				counter++;
 
 			}
 
 		}
 
-		if (shortCounter == 1)
+		intArray = new int[counter];
 
-			return shortest;
+		for (int i = 0; i < counter; i++) {
 
-		else
+			intArray[i] = integers[i];
 
-			return multipleShortest;
+		}
 
+	}
+
+	public boolean search(int Num) {
+
+		boolean number = false;
+
+		for (int i = 0; i < counter; i++) {
+
+			if (Num == intArray[i]) {
+
+				number = true;
+
+			}
+
+		}
+
+		return number;
+
+	}
+
+	public int findMax() {
+
+		int maximum = Integer.MIN_VALUE;
+
+		for (int i = 0; i < counter; i++) {
+
+			if (intArray[i] > maximum) {
+
+				maximum = intArray[i];
+
+			}
+
+		}
+
+		return maximum;
+
+	}
+
+	public int findMin() {
+
+		int minimum = Integer.MAX_VALUE;
+
+		for (int i = 0; i < counter; i++) {
+
+			if (intArray[i] < minimum) {
+
+				minimum = intArray[i];
+
+			}
+
+		}
+
+		return minimum;
+
+	}
+
+	public int findMaxPos() {
+
+		int maximum = Integer.MIN_VALUE;
+
+		int maxPos = 0;
+
+		for (int i = 0; i < counter; i++) {
+
+			if (intArray[i] > maximum) {
+
+				maximum = intArray[i];
+
+				maxPos = i;
+
+			}
+
+		}
+
+		return maxPos;
+
+	}
+
+	public int findMinPos() {
+
+		int minimum = Integer.MAX_VALUE;
+
+		int minPos = 0;
+
+		for (int i = 0; i < counter; i++) {
+
+			if (intArray[i] > minimum) {
+
+				minimum = intArray[i];
+
+				minPos = i;
+
+			}
+
+		}
+
+		return minPos;
 	}
 
 }

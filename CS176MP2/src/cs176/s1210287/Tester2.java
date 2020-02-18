@@ -1,48 +1,38 @@
 package cs176.s1210287;
-
-import java.util.Scanner;
-			
 public class Tester2 {
-	
+
 	public static void main(String[] args) {
 
-		// TODO Auto-generated method stub
+		Class2 test2 = new Class2(100);
 
-		Class2 string = new Class2();
+
+		test2.load();
+
+		test2.search(1);
 		
-		String inArray = "Hi";
+		test2.findMax();
 
-		boolean isInArray = false;
+		test2.findMin();
 
-		string.load();
+		test2.findMaxPos();
 
-		String longest = "";
+		test2.findMinPos();
+	
 
-		String shortest = "";
+		System.out.println("Was the number '22' in the array: " + test2.search(22));
 
-		isInArray = string.search(inArray);
+		System.out.println("The maximum value is: " + test2.findMax());
 
-		if (isInArray == true)
+		System.out.println("The minimum value is: " + test2.findMin());
 
-			System.out.println("The string " + inArray + " is in the array.");
+		System.out.println("The maximum value index position is: " + test2.findMaxPos());
 
-		else
+		System.out.print("The minimum value index position is: " + test2.findMinPos());
 
-			System.out.println("The string " + inArray + " is not in the array.");
 
-		string.findMax();
-
-		string.findMin();
-
-		longest = string.findLongest();
-
-		System.out.println(longest + " is the longest");
-
-		shortest = string.findShortest();
-
-		System.out.println(shortest +" is the shortest");
-
-		
 
 	}
+
+
+
 }

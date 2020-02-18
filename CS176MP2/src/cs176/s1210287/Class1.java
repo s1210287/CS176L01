@@ -1,194 +1,178 @@
 package cs176.s1210287;
+import java.util.Arrays;
 
 import java.util.Scanner;
 
 public class Class1 {
-		Scanner in = new Scanner(System.in);
 
-		final int MAX_ARRAY_SIZE = 100;
+	Scanner in = new Scanner(System.in);
 
-		int arraySize = 0;
+	int count = 0;
 
-		int count = 0;
+	final int MAX_SIZE = 100;
+	
+	int z = 1;
 
-		int load = 0;
+	int  k = 0;
 
-		int max = 0;
+	final String BREAK = "FIN";
 
-		String maxPos = "";
-		
-		int min = 0;
+	String input;
 
-		String minPos = "";
-		
-		boolean fin = false;
+	String max = "";
 
-		Integer [] integerArray;
+	String min = "";
 
-		
+	boolean out = false;
+	
+	//
+	
+	String [] stringArray;
 
-		public  Class1() {
+	//constructor
 
-			integerArray = new Integer[MAX_ARRAY_SIZE];
+	public Class1()
 
-		}
+	{
 
-		public void load () {
+		stringArray = new String[MAX_SIZE];
 
-			System.out.println("Enter some integers, or enter 2 to finish: ");
+	}
 
-			
+	public void load() {
 
-			while (fin == false ) {
+		System.out.print("Enter a series of strings or 'FIN' to stop: ");
 
-				load = in.nextInt();
 
-				if (load == 2) {
 
-					fin = true;
+		while(out == false) {
 
-					count--;
+			input = in.next();
 
-					}
-				else {
+			if(input.equals("FIN")) {
 
-					integerArray[count] = load;
+				out = true;
 
-					count++;
-
-				}
+				count--;
 
 			}
 
-		}
+			else {
 
-		public boolean search(int inNum) {
+				stringArray[count] = input;
 
-			boolean inArray = false;
-
-			for (int i = 0; i <= count; i++) {
-
-				if(integerArray[i] == inNum)
-
-					inArray = true;
+				count++;
 
 			}
-
-			return inArray;
-
-		}
-
-		public  int findMax() {
-
-			for (int i =0; i <= count; i++) {
-
-				if (i == 0)
-
-					max = integerArray[i];
-
-				else {
-
-					if (integerArray[i] > max)
-
-						max = integerArray[i];
-
-				}
-
-			} 
-
-			return max;
-
-		}
-
-		public  int findMin() {
-
-			for (int i =0; i <= count; i++) {
-
-				if (i == 0)
-
-					min = integerArray[i];
-
-				else {
-
-					if (integerArray[i] < min)
-
-						min = integerArray[i];
-
-				}
-
-			} 
-
-			return min;
-
-		}
-
-		public String findMaxPos() {
-
-			String maxPos = "test";
-
-			int maxCounter = 0;
-
-			for (int i = 0; i <= count; i++) {
-
-				if (maxCounter == 0) {
-
-					if (integerArray[i] == max) {
-
-						maxPos = String.valueOf(i);
-
-						maxCounter++;
-
-					}
-				}
-
-				else if (maxCounter > 0){
-
-					if(integerArray[i] == max)
-
-						maxPos = maxPos + ", and " + String.valueOf(i);
-
-						maxCounter++;
-				}			
-
-			}
-
-			return maxPos;
-
-		}
-
-		public String findMinPos() {
-
-			int minCounter = 0;
-
-			for (int i = 0; i <= count; i++) {
-
-				if (minCounter == 0) {
-
-					if (integerArray[i] == min) {
-
-						minPos = String.valueOf(i);
-
-						minCounter++;
-
-					}
-
-				}
-
-				else if (minCounter > 0){
-
-					if(integerArray[i] == min)
-
-						minPos = minPos + ", and " + String.valueOf(i);
-
-						minCounter++;
-
-				}
-					
-
-			}
-
-			return minPos;
 
 		}
 
 	}
+
+	public boolean search(String array) {
+
+		boolean exists = false;
+
+		for (int i = 0; i <= count; i++) {
+
+			if (stringArray[i].contentEquals(array))
+
+				exists = true;
+
+		}
+
+		return exists;
+
+	}
+
+
+	public String findMin(){
+
+		for(int i = 0; i <= count; i++) {
+
+			if(i == k) {
+
+				min = stringArray[i];
+
+			}
+
+			else {
+
+				if(stringArray[i].compareTo(min) < 0) {
+
+					min = stringArray[i];
+
+				}
+
+			}
+
+		}
+
+		return min;
+
+	}
+
+	public String findMax() {
+
+		for(int i = 0; i <= count; i++) {
+
+			if(i == 0) {
+
+				max = stringArray[i];
+
+			}
+
+			else{
+
+				if(stringArray[i].compareTo(max) > 0) {
+
+					max = stringArray[i];
+
+				}
+
+			}
+
+		}
+
+		return max;
+
+	}
+
+	public String findLongest() {
+
+		String longest = stringArray[0];
+
+		for(int i = z; i <= count; i++) {
+
+			if(stringArray[i].length() > longest.length()) {
+
+				longest = stringArray[i];
+
+			}
+
+
+
+		}
+
+		return longest;
+
+	}
+
+	public String findShortest() {
+
+		String shortest = stringArray[0];
+
+		for(int i = z; i <= count; i++) {
+
+			if(stringArray[i].length() < shortest.length()) {
+
+				shortest = stringArray[i];
+
+			}
+
+		}
+
+		return shortest;
+	}
+
+}
