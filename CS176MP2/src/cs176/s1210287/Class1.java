@@ -7,13 +7,9 @@ public class Class1 {
 
 	Scanner in = new Scanner(System.in);
 
-	int count = 0;
+	int counter = 0;
 
 	final int MAX_SIZE = 100;
-	
-	int z = 1;
-
-	int  k = 0;
 
 	final String BREAK = "FIN";
 
@@ -53,15 +49,15 @@ public class Class1 {
 
 				out = true;
 
-				count--;
+				counter--;
 
 			}
 
 			else {
 
-				stringArray[count] = input;
+				stringArray[counter] = input;
 
-				count++;
+				counter++;
 
 			}
 
@@ -73,7 +69,7 @@ public class Class1 {
 
 		boolean exists = false;
 
-		for (int i = 0; i <= count; i++) {
+		for (int i = 0; i <= counter; i++) {
 
 			if (stringArray[i].contentEquals(array))
 
@@ -88,9 +84,9 @@ public class Class1 {
 
 	public String findMin(){
 
-		for(int i = 0; i <= count; i++) {
+		for(int i = 0; i <= counter; i++) {
 
-			if(i == k) {
+			if(i == 0) {
 
 				min = stringArray[i];
 
@@ -114,7 +110,7 @@ public class Class1 {
 
 	public String findMax() {
 
-		for(int i = 0; i <= count; i++) {
+		for(int i = 0; i <= counter; i++) {
 
 			if(i == 0) {
 
@@ -142,7 +138,7 @@ public class Class1 {
 
 		String longest = stringArray[0];
 
-		for(int i = z; i <= count; i++) {
+		for(int i = 1; i <= counter; i++) {
 
 			if(stringArray[i].length() > longest.length()) {
 
@@ -162,7 +158,7 @@ public class Class1 {
 
 		String shortest = stringArray[0];
 
-		for(int i = z; i <= count; i++) {
+		for(int i = 1; i <= counter; i++) {
 
 			if(stringArray[i].length() < shortest.length()) {
 
